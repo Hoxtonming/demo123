@@ -19,3 +19,5 @@ def register(request):
             user.save()
             login(request, user)
             return redirect(reverse("dashboard"))
+def index(request):
+    return  render(request, "users/index.html")
