@@ -9,7 +9,7 @@
         <li><a href="">About</a></li>
         <li><a href="">Contact</a></li>
         <li><a href="">Shoppingcar</a></li>
-        <li><a href="{% url 'login' %}">UserLogin</a></li>
+        <li><a href="{% url 'login' %}">Status:{{ user.username|default:'Login' }}</a>></li>
     </ul>
 </div>
 {% block content %}

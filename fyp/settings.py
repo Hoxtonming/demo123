@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'fyp.urls'
@@ -73,8 +74,10 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "social_core.backends.github.GithubOAuth2",
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 WSGI_APPLICATION = 'fyp.wsgi.application'
 
@@ -132,5 +135,16 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 LOGIN_REDIRECT_URL = "dashboard"
-SOCIAL_AUTH_GITHUB_KEY = os.environ.get("SOCIAL_AUTH_GITHUB_KEY")
-SOCIAL_AUTH_GITHUB_SECRET = os.environ.get("SOCIAL_AUTH_GITHUB_SECRET")
+
+SOCIAL_AUTH_GITHUB_KEY = '7ab707ff8de4088f4d5c'
+SOCIAL_AUTH_GITHUB_SECRET = 'b975ff17322fa0be86248c5e94be49e4e448bb45'
+
+
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'postmaster@sandboxeab3f329f32d40d58d2d96b0b3ffb066.mailgun.org'
+EMAIL_HOST_PASSWORD = 'aac857548600d868df5178dfab87e01e-95f6ca46-25db284f'
+EMAIL_USE_TLS = True
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
